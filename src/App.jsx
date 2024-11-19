@@ -23,11 +23,17 @@ const [todos, setTodos] = useState([
     setTodos(newTodos);
   };
 
+  const completeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+};
+
     return (
       <div className='app'>
         <h1 className='todo-list'>My todo list</h1>
         {todos.map((todo, index) => (
-          <TodoItem todo={todo} key={index} />
+          <TodoItem todo={todo} key={index} index={index} completeTodo={completeTodo} />
           ))}
           <TodoForm addTodo={addTodo} />
           </div>
